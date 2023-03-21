@@ -2,15 +2,11 @@ package at.htld.module.appointmentapi;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/appointment")
 public class AppointmentsController {
-
-    public List<Appointments> appointmentsList = new ArrayList<>();
 
     private final AppointmentRepository appointmentRepository;
 
