@@ -20,22 +20,28 @@ public class AppointmentsController {
 
     @GetMapping("/findAll")
     public List<Appointments> findAll() {
-        return appointmentsList;
+        return appointmentRepository.findAll();
     }
 
-    @GetMapping("/findByName/{name}")
-    public Appointments findByName(@PathVariable String name){
-        return appointmentRepository.findByName(name);
+    @GetMapping("/findByName/{patient}")
+    public Appointments findByName(@PathVariable String patient){
+        return appointmentRepository.findByPatient(patient);
     }
 
-    @GetMapping("/findByDate/{date}")
-    public Appointments findByDate(@PathVariable Date date){
-        return appointmentRepository.findByDate(date);
+    @GetMapping("/findByDay/{day}")
+    public Appointments findByDay(@PathVariable String day){
+        return appointmentRepository.findByDay(day);
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public Appointments add (@RequestBody Appointments appointments) {
         appointmentRepository.save(appointments);
         return appointments;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable String id) {
+        appointmentRepository.deleteById(id);
+        return "Deleted!";
     }
 }

@@ -8,7 +8,7 @@ import java.util.Date;
 @Repository
 public interface AppointmentRepository extends MongoRepository<Appointments, String> {
 
-    Appointments findByName(String name);
+    Appointments findByPatient(String patient);
 
-    Appointments findByDate(Date date);
+    Appointments findByDay(String day);
 }
